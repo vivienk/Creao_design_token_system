@@ -4,11 +4,19 @@ These are proposed editable compositions using CREAO's existing tokens. They are
 
 [Figma review frame](https://www.figma.com/design/BPE75UDUT8mAXX3NkDmMzE?node-id=2-329) contains six compositions: chat, settings and agent configuration in Light and Dark.
 
+## Current screen evidence
+
+Reviewed 2026-10-11. Columns: chat workspace, settings, agent configuration. Top row: Light. Bottom row: Dark. This is the latest review capture, not a render of the unapplied capability proposals.
+
+![Current chat, settings and agent configuration specimens in both themes](screen-review-preview.png)
+
+The [screen review](screen-review.md) records unresolved action labels, control capabilities, state coverage, spacing, heading alignment and active-indicator consistency. [High-priority accessibility requirements](accessibility-priority-issues.md) need runtime evidence. The [original Agents notification screenshot](notification-pattern.md) documents an additional observed placement defect.
+
 ## Shared inventory
 
 Original asset update: shared navigation now uses the original CREAO SVG wordmark and editable source icons. All six specimens inherit the same asset components. See [icon inventory and enforcement](icon-system.md); all 308 bundle icons are available in Figma. Existing variables and source values remain unchanged.
 
-Navigation hierarchy update (2026-10-11): the sidebar uses `--color-surface-alt`, the main canvas uses `--color-surface`, and a right-hand divider uses `--color-border`. Active navigation uses `--color-surface-raised` with `--color-foreground` text and a leading indicator. The selected label is medium weight; inactive labels use `--color-sidebar-fg`. Recents is a smaller muted section label. Each screen selects its corresponding route, and the sidebar stretches alongside the main panel. Both themes use the same source variables; no token values were changed.
+Navigation hierarchy update (2026-10-11): the sidebar uses `--color-surface-alt`, the main canvas uses `--color-surface`, and a right-hand divider uses `--color-border`. Active navigation uses `--color-surface-raised` with `--color-foreground` text. The leading indicator is the intended existing rule but appears inconsistently in the latest capture (R05). The selected label is medium weight; inactive labels use `--color-sidebar-fg`. Recents is a smaller muted section label. Each screen selects its corresponding route, and the sidebar stretches alongside the main panel. Both themes use the same source variables; no token values were changed.
 
 Seven source-bound components: primary action, labeled field, workspace navigation, agent message, composer, settings section and agent configuration. Screen patterns reuse component instances and auto-layout; they remain editable. Three shared text styles prevent typography drifting between patterns.
 

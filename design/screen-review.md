@@ -6,6 +6,8 @@ Evidence: [current six-screen render](screen-review-preview.png), [inspected lay
 
 ## Findings
 
+![Screens inspected during this review; open findings remain unapplied](screen-review-preview.png)
+
 P1 means resolve before these patterns serve as implementation specifications; P2 means consistency or clarity improvement. Recommendations below are unapplied.
 
 | ID | Priority | Area and evidence | Finding | Recommended disposition |

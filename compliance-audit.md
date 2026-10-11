@@ -21,6 +21,10 @@ Observed reference tokens are evidence of CSS declarations, not a pass for the n
 
 ## Evidence register
 
+![Current reviewed Figma screen specimens](design/screen-review-preview.png)
+
+The [notification reference screenshot](design/notification-pattern.md) provides direct visual evidence for N01. Current screen renders and observed reference defects remain separate from proposed remediation.
+
 | ID | Evidence | What it supports | Limitation |
 | --- | --- | --- | --- |
 | E01 | Public CREAO CSS, fetched 2026-10-11; URL above | Theme token declarations, font stacks, Tailwind 4.2.1 identifier | Versioned asset may change; declarations do not prove rendered usage |

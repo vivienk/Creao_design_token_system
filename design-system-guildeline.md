@@ -18,6 +18,10 @@ The pinned CSS is the project token authority. See [source ownership and cascade
 
 ## Visual direction
 
+![Latest reviewed screen specimens in Light and Dark](design/screen-review-preview.png)
+
+Current specimens are shown for visual context. Follow [the screen review](design/screen-review.md) for known gaps; this image does not claim those findings have been fixed.
+
 Use warm neutral surfaces, charcoal text, restrained accents, clear hierarchy, and generous spacing. Preserve readability across both themes. Use color for meaning and emphasis rather than decorative saturation. This direction is an interpretation of the observed tokens.
 
 ## Color tokens — observed

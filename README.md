@@ -2,6 +2,12 @@
 
 Source-backed design foundations and reusable workspace patterns.
 
+Latest reviewed desktop screens: chat, settings and agent configuration, Light above and Dark below. These are current Figma specimens; the [review findings](design/screen-review.md) and [proposed extensions](design/component-extension-proposal.md) remain open.
+
+![Current six-screen Figma specimens](design/screen-review-preview.png)
+
+See the [notification screenshot and placement rule](design/notification-pattern.md) for the observed dismiss-button defect.
+
 - [Design guideline](design-system-guildeline.md)
 - [Compliance audit](compliance-audit.md)
 - [High-priority accessibility requirements](design/accessibility-priority-issues.md)

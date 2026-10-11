@@ -4,6 +4,10 @@ Updated: 2026-10-11. User-approved placement rule: the dismiss control stays at 
 
 ## Observed defect N01
 
+![Original Agents page: notification close control incorrectly placed below the message at the left](notification-reference.png)
+
+Original site screenshot supplied by the user. The red rectangle is the user's annotation. This image shows the defect before remediation; the proposed top-right placement has not been applied to the live site.
+
 Evidence: user-supplied screenshot “Screenshot 2026-10-11 at 2.02.57 PM.png”, Agents page at `https://agent.creao.ai/apps`. The “Team agents & skills are here” inline announcement displays its X beneath the message, near the left edge. Expected: X at the top-right inside the announcement. Priority: P2 layout consistency. This screenshot demonstrates the placement defect; runtime cause and dismissal behavior have not been tested.
 
 The highlighted element is an inline announcement banner, not evidence of a floating toast implementation. The placement rule applies consistently to both.
