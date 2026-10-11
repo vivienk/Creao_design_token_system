@@ -2,6 +2,8 @@
 
 Status: unapplied; separate from the current definitions. References: [screen review](screen-review.md). Keep existing IDs, source variable names/values, icon geometry and logo unchanged.
 
+All proposed controls must satisfy [A11Y09 and A11Y10](accessibility-priority-issues.md): measure required control/state cues at 3:1 in both themes, and warn visibly and accessibly before opening another browsing context. A reusable external-link capability is a separate proposed addition: label/destination, optional original source icon, current-context default and explicit new-context warning. It is not an approved change to existing definitions.
+
 | Extension | Gap addressed | Proposed API / anatomy | Acceptance evidence |
 | --- | --- | --- | --- |
 | Button capability | R01, R04 | Preserve Primary action. Add reviewed role/state properties: primary, secondary, destructive only where used; default, hover, pressed, focus, disabled, loading; label and optional source-icon slots | Both themes; stable loading label and dimensions; keyboard focus and accessible name; one primary per action group |

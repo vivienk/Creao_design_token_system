@@ -18,6 +18,8 @@ This lightweight scanner is intentionally bounded. It is not an AST linter and d
 
 ## Review gate
 
+High-priority manual gates: [A11Y09/A11Y10](accessibility-priority-issues.md). Attach measured contrast pairs for required control/state cues in both themes, plus evidence of visible/accessible warnings and correct target/rel attributes for new-context links. The current automated scanner does not measure contrast or inspect link behavior.
+
 Use the pull-request template. Reviewers must inspect:
 
 1. Token source and scope: use the existing role; do not flatten auth/vendor scopes or add replacement names.

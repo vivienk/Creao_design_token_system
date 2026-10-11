@@ -82,6 +82,8 @@ Use content-driven breakpoints and document the decisions; no breakpoint-token a
 
 ## Accessibility and motion
 
+Apply the [high-priority accessibility requirements](design/accessibility-priority-issues.md): required non-text control/state cues must meet 3:1 against adjacent colors; intentional new-context links must provide visible and accessible advance warning under project policy. Preserve source definitions and propose any missing capability separately.
+
 Target WCAG 2.2 AA. Test keyboard access, focus visibility, accessible naming, error handling, zoom, reflow, and screen-reader behavior using the [W3C reference](https://www.w3.org/WAI/WCAG22/quickref/). Automated checks alone do not establish conformance.
 
 Project rules: preserve visible focus, provide text alongside status colors, prefer 44px touch targets, and honor reduced motion. Reuse the observed `--default-transition-duration: .15s` and existing easing expressions where appropriate; these declarations do not establish every component's animation. Avoid animation that delays a user action or moves focused controls.
