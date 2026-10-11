@@ -34,3 +34,16 @@ test('inline suppression and Atlaskit runtime migration are blocked', async () =
   assert.ok(r.messages.some(m => m.ruleId === 'creao/existing-tokens' && m.message.includes('runtime')));
   assert.ok(r.messages.some(m => m.message.includes('padding')));
 });
+test('known tokens used in wrong property domains fail', async () => {
+  const r = await lint(`const View=()=> <div style={{color:'var(--spacing)',fontSize:'var(--color-foreground)',borderRadius:'var(--text-base)'}}/>;`);
+  assert.equal(r.messages.filter(m => m.messageId === 'domain').length, 3);
+});
+test('primitive color bypass and corner radius literals fail', async () => {
+  const r = await lint(`const View=()=> <div style={{color:'var(--color-grey-500)',borderTopLeftRadius:14,borderStartStartRadius:14}}/>;`);
+  assert.ok(r.messages.some(m => m.messageId === 'domain'));
+  assert.equal(r.messages.filter(m => m.messageId === 'literal').length, 2);
+});
+test('approved role domains and corner radius tokens pass', async () => {
+  const r = await lint(`const View=()=> <div style={{color:'var(--color-foreground)',borderTopLeftRadius:'var(--radius-md)',fontFamily:'var(--font-sans)',fontWeight:'var(--font-weight-medium)',lineHeight:'var(--text-base--line-height)',letterSpacing:'var(--tracking-normal)'}}/>;`);
+  assert.equal(r.errorCount, 0, JSON.stringify(r.messages));
+});

@@ -12,6 +12,22 @@ Fail = visible/measured rule violation. Gap = absent capability/evidence prevent
 
 ## Worked findings
 
+### Original supplied screens — distinct from generated specimens
+
+![Original chat screen supplied by the user](design/chat-reference.png)
+
+| ID / status | Screenshot evidence | Rule / exact correction | How the gate catches it |
+| --- | --- | --- | --- |
+| O01 Fail against proposed baseline | Original chat sidebar/main look blended; user reported unclear hierarchy | G03: compose existing alternate/sidebar and main surface roles plus divider; do not alter token values | B02 inspects both region roles and full-screen hierarchy. Screenshot supports perceived blending, not exact CSS/color attribution |
+| O02 Not assessed | Original chat composer appears at bottom; scroll persistence is not demonstrable in a still image | G06: retain this anatomy and test persistent composer/last-message visibility | B03 requires long-conversation scrolling evidence; absence prevents a runtime pass, not evidence of a defect |
+| O03 Pass within screenshot scope | Original chat distinguishes user bubbles, agent text and completed-step status | G06: retain distinct message/status anatomy | B02 confirms visible grouping; B04 still requires streaming/failure behavior |
+| O04 Pass within screenshot scope | Original Agents screenshot groups Import/Create in header, tabs above search/filters and row actions with agent | G05/G09: retain these groupings | B02 compares action/region placement; hidden states remain unassessed |
+| O05 Fail | Original Agents announcement dismiss control is below-left; same issue as N01 below | G10: anchor inside container top-right with reserved space | B03 default/wrapped-content bounds check catches it; O05 and N01 are one defect, not two |
+
+Original screenshots do not establish precise token usage, control contrast, missing hover states or live interactions. F01–F10 below apply to generated Figma specimens; they must not be attributed to the original product. Screenshot-only evidence is not a runtime audit.
+
+### Generated specimen findings and unassessed runtime requirements
+
 | ID / status | Specific violation/evidence | Rule | Exact remediation | How enforcement prevents shipment |
 | --- | --- | --- | --- | --- |
 | F01 Fail | Settings `2:302` and configuration `2:313` display Continue without wizard context | G05, G07, G08 | Override to Save changes/Save agent, or show actual steps/final save | B02 checks label against outcome; unexplained Continue fails |
@@ -36,7 +52,7 @@ Sidebar/main surfaces visibly separate in both themes. Original assets are retai
 
 Foundation gate A passes source/adapters/assets and four extraction tests. It cannot resolve the screen findings. Runtime keyboard, reflow, persistence, contrast and link behavior remain unassessed.
 
-Automated enforcement update: Atlassian `ensure-design-token-usage` now runs for color in application JS/JSX/TS/TSX, with Creao registry/spacing/type checks and detection-only fixes. Six positive/negative lint tests pass. For F06, a future literal inline `padding: 14` is rejected by `creao/existing-tokens`; a CSS literal remains rejected by the Python scanner. Raw CSS-in-JS colors are rejected by Atlassian's rule. Neither rule measures Figma geometry, detects missing capabilities or substitutes for B01–B06. No runtime violations were closed by this tooling change.
+Automated enforcement update: Atlassian `ensure-design-token-usage` now runs for color in application JS/JSX/TS/TSX, with Creao registry/spacing/type checks and detection-only fixes. Nine positive/negative lint tests pass, including wrong-domain tokens and corner-specific radii. For F06, a future literal inline `padding: 14` is rejected by `creao/existing-tokens`; a CSS literal remains rejected by the Python scanner. Raw CSS-in-JS colors are rejected by Atlassian's rule. Neither rule measures Figma geometry, detects missing capabilities or substitutes for B01–B06. No runtime violations were closed by this tooling change.
 
 ## Missing capability proposals — separate and unapplied
 
@@ -55,3 +71,7 @@ Top-right dismissal placement is explicitly approved. Other shared capability ch
 ## Decision and retest
 
 **Blocked as complete implementation specifications:** visible violations and capability gaps remain. Live Creao was not modified. For every fix record finding ID, commit, component/screen IDs, theme/viewport/state, applicable B check, before/after evidence and reviewer. Close Fail only after the check passes; close Gap only after authorized capability and evidence exist. Documentation edits alone cannot close runtime findings.
+
+## Enforcement infrastructure gap
+
+E01: main is unprotected. Attempting strict source-and-token-check plus one PR approval, stale-review dismissal and admin enforcement returned HTTP403 on 2026-10-11: upgrade GitHub Pro or make the repository public. No visibility change was made. This is an unresolved enforcement gap; CI results and review policy exist, but GitHub does not block bypass. Resolve by enabling protection after an authorized plan change, then verify direct pushes/unchecked PR merges are blocked.
