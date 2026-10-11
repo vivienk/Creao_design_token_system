@@ -8,3 +8,5 @@ Two authoritative Markdown design deliverables:
 - [Worked compliance audit](compliance-audit.md)
 
 The design directory holds supporting assets, source records, previews and historical working notes. The two documents above govern current design review. Existing component/token definitions remain unchanged.
+
+[Download the native editable Figma backup](design/Creao.fig) — exported from the existing Creao file on 2026-10-11.

@@ -54,7 +54,7 @@ Gate B is manual, not claimed as CI automation. Branch protection is not configu
 
 ## Current specimens
 
-[Editable Figma source file](https://www.figma.com/design/BPE75UDUT8mAXX3NkDmMzE?node-id=2-329). This link opens the existing design; a native `.fig` backup is not included in the repository.
+[Editable Figma source file](https://www.figma.com/design/BPE75UDUT8mAXX3NkDmMzE?node-id=2-329). A native [Creao.fig backup](design/Creao.fig) is included in the repository, exported 2026-10-11. Import it into Figma to recover editable artwork; the live file remains the working design.
 
 ![Current specimens: Light above, Dark below](design/screen-review-preview.png)
 
