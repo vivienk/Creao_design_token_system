@@ -1,12 +1,12 @@
 # Creao Design-System Compliance Audit
 
-Audit date: 2026-10-11 · Baseline: [design-system-guildeline.md](design-system-guildeline.md) v0.1
+Audit date: 2026-10-11 · Baseline: [design-system-guildeline.md](design-system-guildeline.md) v0.2
 
 ## Scope and current conclusion
 
 This is a design-system and accessibility-readiness audit for vivienk/Creao. It does not assess legal, privacy, security, or regulatory compliance.
 
-The repository contained only a starter README before these documents were added. There are no project UI screens or components to evaluate. Overall implementation status: **Not assessed**. No product-level compliance claim is supported.
+The repository now contains a pinned source snapshot, generated CSS/JSON adapters, extraction and validation scripts, CI, review guidance and editable Figma compositions. There is no running application. Overall runtime implementation status: **Not assessed**. Adapter integrity and Figma token parity are evaluated separately below.
 
 Reference research inspected the public CREAO stylesheet at https://agent.creao.ai/assets/index-C3VRtTd6.css. The public chat URL exposed a login page through the web reader; the browser view remained blank. Authenticated flows and component behavior were not tested.
 
@@ -26,6 +26,24 @@ Observed reference tokens are evidence of CSS declarations, not a pass for the n
 | E01 | Public CREAO CSS, fetched 2026-10-11; URL above | Theme token declarations, font stacks, Tailwind 4.2.1 identifier | Versioned asset may change; declarations do not prove rendered usage |
 | E02 | Public https://agent.creao.ai/chat through web reader | Login content is exposed to unauthenticated access | No authenticated UI or behavior test |
 | E03 | GitHub repository root inspection before document creation | Starter README only | No application implementation available |
+| E04 | Pinned CSS SHA-256 and byte-identical re-fetch; [source-of-truth.md](design/source-of-truth.md) | Reproducible inspected source | Upstream authored source remains unknown |
+| E05 | [Figma record](design/generated/figma-record.json) and [preview](design/patterns-preview.png) | 278 variables, preserved aliases, 7 reusable components, 6 desktop compositions, shared styles | Static patterns; no runtime behavior certification |
+| E06 | Local extraction checks and four passing source-mapping tests | Adapter parity, names, aliases, alpha, unit and scoped-theme behavior | No running app; scanner coverage is bounded |
+
+## Completed delivery checks
+
+| Check | Result | Evidence |
+| --- | --- | --- |
+| Source reproducibility | Pass | E04: pinned snapshot matched re-fetch |
+| Generated mapping and CSS parity | Pass | E06: check_design.py |
+| Source alias, scope, alpha and unit extraction | Pass | E06: four unit tests |
+| Figma theme-variable parity | Pass | E05: all 274 theme variables checked; no mismatches within float tolerance |
+| Dark-only representation | Pass | Separate collection retains four declarations without invented Light values |
+| Desktop pattern visual review | Pass within specimen scope | Corrected multiline overlap and nested field overflow; editable instances retained |
+| Application accessibility / responsive behavior | Not assessed | Application absent |
+| Required merge checks / branch protection | Not configured | Workflow added; repository rules not changed |
+
+See [enforcement.md](design/enforcement.md) for what CI blocks and what requires human review. The requirement table below continues to describe runtime release checks.
 
 ## Requirement audit
 

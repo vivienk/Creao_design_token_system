@@ -1,0 +1,12 @@
+name: Design system compliance
+on: [push, pull_request]
+jobs:
+  source-and-token-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/check_design.py
+      - run: python scripts/test_tokens.py

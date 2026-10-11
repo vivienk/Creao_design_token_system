@@ -1,0 +1,102 @@
+{
+  "darkOnly": {
+    "collectionId": "VariableCollectionId:2:482",
+    "modes": [
+      {
+        "name": "Dark",
+        "modeId": "2:2"
+      }
+    ],
+    "variables": [
+      {
+        "id": "VariableID:2:483",
+        "name": "control/surface",
+        "values": {
+          "2:2": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:2:203"
+          }
+        },
+        "code": {
+          "WEB": "var(--control-surface)"
+        }
+      },
+      {
+        "id": "VariableID:2:484",
+        "name": "color/accent/light",
+        "values": {
+          "2:2": {
+            "r": 0.9254902005195618,
+            "g": 0.886274516582489,
+            "b": 0.8666666746139526,
+            "a": 1
+          }
+        },
+        "code": {
+          "WEB": "var(--color-accent-light)"
+        }
+      },
+      {
+        "id": "VariableID:2:485",
+        "name": "shadow/popover",
+        "values": {
+          "2:2": "0px 8px 24px 0px #0006"
+        },
+        "code": {
+          "WEB": "var(--shadow-popover)"
+        }
+      },
+      {
+        "id": "VariableID:2:486",
+        "name": "shadow/panel",
+        "values": {
+          "2:2": "0 0 0 0 transparent"
+        },
+        "code": {
+          "WEB": "var(--shadow-panel)"
+        }
+      }
+    ]
+  },
+  "issues": [],
+  "screens": [
+    {
+      "id": "2:333",
+      "name": "Chat workspace / Light",
+      "width": 1028,
+      "height": 704
+    },
+    {
+      "id": "2:356",
+      "name": "Settings / Light",
+      "width": 1028,
+      "height": 620
+    },
+    {
+      "id": "2:379",
+      "name": "Agent configuration / Light",
+      "width": 1028,
+      "height": 828
+    },
+    {
+      "id": "2:408",
+      "name": "Chat workspace / Dark",
+      "width": 1028,
+      "height": 704
+    },
+    {
+      "id": "2:431",
+      "name": "Settings / Dark",
+      "width": 1028,
+      "height": 620
+    },
+    {
+      "id": "2:454",
+      "name": "Agent configuration / Dark",
+      "width": 1028,
+      "height": 828
+    }
+  ],
+  "reviewId": "2:329",
+  "reviewHeight": 1904
+}
