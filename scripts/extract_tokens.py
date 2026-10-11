@@ -61,6 +61,8 @@ def build():
     tokens=[]
     for k,v in light.items():
         vals={mode:resolve(k,values) for mode,values in [('Light',light),('Dark',dark)]}
+        # Normalize platform-dependent math noise without changing the raw CSS.
+        vals={mode:({channel:round(number,7) for channel,number in value.items()} if isinstance(value,dict) else value) for mode,value in vals.items()}
         typ='COLOR' if all(isinstance(x,dict) for x in vals.values()) else 'FLOAT' if all(isinstance(x,(int,float)) for x in vals.values()) else 'STRING'
         tokens.append(dict(cssName=k,figmaName=re.sub(r'-+','/',k[2:]),type=typ,raw={'Light':v,'Dark':dark[k]},values=vals,aliases={m:(re.fullmatch(r'var\((--[\w-]+)\)',x)[1] if re.fullmatch(r'var\((--[\w-]+)\)',x) else None) for m,x in [('Light',v),('Dark',dark[k])]}))
     dark_only={d['name']:d['value'] for d in inventory if d['selector']=='.dark' and d['name'] not in light and d['name'].startswith(('--color-','--shadow-','--control-'))}
