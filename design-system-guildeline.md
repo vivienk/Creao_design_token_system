@@ -62,6 +62,8 @@ Use multiples of the existing `--spacing` unit: `calc(var(--spacing) * n)`. Do n
 
 ## Component rules — proposed
 
+Approved notification placement: dismiss controls remain at the notification container's top-right, with reserved content space and predictable keyboard focus. See [notification contract and observed defect](design/notification-pattern.md). This applies to dismissible banners, popups and toasts.
+
 | Component | Rules and required states |
 | --- | --- |
 | Button | One primary action per action group; secondary and destructive variants; default, hover, active, focus, disabled, loading. Keep a stable label during loading. |

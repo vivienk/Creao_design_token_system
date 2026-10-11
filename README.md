@@ -5,6 +5,7 @@ Source-backed design foundations and reusable workspace patterns.
 - [Design guideline](design-system-guildeline.md)
 - [Compliance audit](compliance-audit.md)
 - [High-priority accessibility requirements](design/accessibility-priority-issues.md)
+- [Notification dismissal placement](design/notification-pattern.md)
 - [Screen and component review](design/screen-review.md)
 - [Separate component extension proposal](design/component-extension-proposal.md)
 - [Existing source of truth](design/source-of-truth.md)

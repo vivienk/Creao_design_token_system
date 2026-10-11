@@ -2,6 +2,8 @@
 
 Status: unapplied; separate from the current definitions. References: [screen review](screen-review.md). Keep existing IDs, source variable names/values, icon geometry and logo unchanged.
 
+Notification capability gap: add a separately reviewed dismissible banner/toast with icon, title, body, optional action and dismiss slots. The user has authorized the [top-right dismissal placement rule](notification-pattern.md). Use a top-aligned content/close layout with reserved space, original `x` icon, accessible dismiss button and focus handling. Other anatomy, variants and tokens remain unapplied proposals.
+
 All proposed controls must satisfy [A11Y09 and A11Y10](accessibility-priority-issues.md): measure required control/state cues at 3:1 in both themes, and warn visibly and accessibly before opening another browsing context. A reusable external-link capability is a separate proposed addition: label/destination, optional original source icon, current-context default and explicit new-context warning. It is not an approved change to existing definitions.
 
 | Extension | Gap addressed | Proposed API / anatomy | Acceptance evidence |

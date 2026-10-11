@@ -67,6 +67,8 @@ See [enforcement.md](design/enforcement.md) for what CI blocks and what requires
 
 ## Findings and gaps
 
+N01: the supplied Agents-page screenshot shows an announcement's dismiss X below the content at the left. This is an **observed placement defect**, distinct from an assessed WCAG failure. The approved [notification placement contract](design/notification-pattern.md) anchors dismissal at the container's top-right. Live remediation and interaction retest remain pending; the repository has no application implementation to patch.
+
 Two [high-priority accessibility requirements](design/accessibility-priority-issues.md) have been added: A11Y09 (required non-text control/state cues, 3:1 contrast, WCAG AA) and A11Y10 (advance warning for new browsing contexts, project policy informed by WCAG AAA guidance). Both are **Not assessed** in the runtime application. No measured failure is asserted. The user's third item was empty.
 
 The [2026-10-11 screen review](design/screen-review.md) records ten findings covering structure, action labels, component capabilities, state coverage, spacing and typography. [Extensions are proposed separately](design/component-extension-proposal.md) and remain unapplied. Existing Figma definitions were preserved during this review. Static patterns remain incomplete as interactive specifications.
