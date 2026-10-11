@@ -36,6 +36,8 @@ Sidebar/main surfaces visibly separate in both themes. Original assets are retai
 
 Foundation gate A passes source/adapters/assets and four extraction tests. It cannot resolve the screen findings. Runtime keyboard, reflow, persistence, contrast and link behavior remain unassessed.
 
+Automated enforcement update: Atlassian `ensure-design-token-usage` now runs for color in application JS/JSX/TS/TSX, with Creao registry/spacing/type checks and detection-only fixes. Six positive/negative lint tests pass. For F06, a future literal inline `padding: 14` is rejected by `creao/existing-tokens`; a CSS literal remains rejected by the Python scanner. Raw CSS-in-JS colors are rejected by Atlassian's rule. Neither rule measures Figma geometry, detects missing capabilities or substitutes for B01–B06. No runtime violations were closed by this tooling change.
+
 ## Missing capability proposals — separate and unapplied
 
 | Extension | Existing definition preserved | Capability proposed | Acceptance gate |

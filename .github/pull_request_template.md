@@ -11,4 +11,5 @@
 - Any unbound values, new tokens or deviations (rationale and reviewer):
 
 Run `python scripts/check_design.py` and `python scripts/test_tokens.py`.
+Also run `npm ci`, `npm run lint:design` and `npm run test:lint`. Do not suppress lint rules or apply Atlaskit token migration fixes; use existing Creao CSS variables.
 Do not describe automated checks as product accessibility certification.

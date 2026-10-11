@@ -1,0 +1,14 @@
+{
+  "name": "creao-design-guardrails",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint:design": "eslint .",
+    "test:lint": "node --test scripts/eslint-guardrails.test.mjs"
+  },
+  "devDependencies": {
+    "@atlaskit/eslint-plugin-design-system": "16.13.6",
+    "@typescript-eslint/parser": "8.71.1",
+    "eslint": "10.12.0"
+  }
+}

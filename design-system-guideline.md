@@ -33,9 +33,18 @@ Run from repo root:
 ```sh
 python3 scripts/check_design.py
 python3 scripts/test_tokens.py
+npm ci
+npm run lint:design
+npm run test:lint
 ```
 
-Both must exit 0. Existing Actions job `source-and-token-check` runs these on push/PR. It checks pinned source/export parity, aliases/names, asset hashes and registry coverage. In existing `src`, `app`, `components`, a bounded scanner rejects raw colors, unknown token references, token redefinitions, selected arbitrary utilities and CSS spacing literals. It does not inspect Figma, runtime layouts, contrast or link behavior; with no app files it verifies foundations only.
+Both Python checks must exit 0. Existing Actions job `source-and-token-check` runs these on push/PR. It checks pinned source/export parity, aliases/names, asset hashes and registry coverage. In existing `src`, `app`, `components`, a bounded scanner rejects raw colors, unknown token references, token redefinitions, selected arbitrary utilities and CSS spacing literals. It does not inspect Figma, runtime layouts, contrast or link behavior; with no app files it verifies foundations only.
+
+All commands above must succeed. `eslint.config.mjs` enables Atlassian's `ensure-design-token-usage` color rule for JS/JSX/TS/TSX under `src`, `app`, `components`, plus `creao/existing-tokens`. The latter checks literal style-property values against the existing registry, rejects raw spacing/type/shape values and unknown `var(...)` references, and prevents importing `@atlaskit/tokens` as a runtime replacement. Atlassian's spacing rule is not enabled because Creao's approved spacing expression is `calc(var(--spacing) * integer)`. Creao's rule enforces that expression. Inline ESLint suppression is disabled; exceptions require a reviewed configuration change.
+
+Atlassian auto-fixes/suggestions are suppressed to prevent migration to Atlaskit token names; lint is detection-only. Dependencies are development tooling, not a replacement palette. Six executable positive/negative tests verify valid Creao references, Atlassian color detection, raw spacing/type rejection, unknown references, unsafe fallbacks, fractional spacing and suppression/autofix behavior. Do not run source migrations suggested by upstream docs.
+
+Coverage boundary: ESLint checks supported CSS-in-JS and literal AST style-property values; dynamic expressions, class utilities, external styles and runtime computed styles still require B review. Standalone CSS remains covered by the existing Python scanner, not ESLint. No application files exist yet, so repository lint success alone does not demonstrate application compliance.
 
 ### Gate B: mandatory screen evidence review
 
