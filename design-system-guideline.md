@@ -54,6 +54,8 @@ Gate B is manual, not claimed as CI automation. Branch protection is not configu
 
 ## Current specimens
 
+[Editable Figma source file](https://www.figma.com/design/BPE75UDUT8mAXX3NkDmMzE?node-id=2-329). This link opens the existing design; a native `.fig` backup is not included in the repository.
+
 ![Current specimens: Light above, Dark below](design/screen-review-preview.png)
 
 These are current designs, not corrected implementations. See the worked audit for open issues.

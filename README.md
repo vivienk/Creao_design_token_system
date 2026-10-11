@@ -2,6 +2,8 @@
 
 Two authoritative Markdown design deliverables:
 
+[Open the editable Creao Figma file](https://www.figma.com/design/BPE75UDUT8mAXX3NkDmMzE?node-id=2-329) — existing source tokens, component library and six screen patterns. Access follows the file's existing Figma permissions.
+
 - [Product-layer guideline and enforcement](design-system-guideline.md)
 - [Worked compliance audit](compliance-audit.md)
 
