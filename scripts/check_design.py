@@ -1,8 +1,19 @@
 """Fail CI on source/export drift and simple first-party style bypasses."""
-import json, pathlib, re, sys
+import hashlib, json, pathlib, re, sys
+import xml.etree.ElementTree as ET
 from extract_tokens import build, ROOT
 
 errors=[]
+assets=json.loads((ROOT/'design/assets/manifest.json').read_text())
+for asset in assets['icons']+[assets['logo']]:
+    path=ROOT/asset.get('svg',asset.get('path',''))
+    if not path.exists() or hashlib.sha256(path.read_bytes()).hexdigest()!=asset['sha256']:
+        errors.append('Source asset missing or changed: '+str(path))
+    else:
+        ET.fromstring(path.read_text())
+registered=json.loads((ROOT/'design/assets/figma-assets.json').read_text())
+if {x['name'] for x in registered['components']}!={x['name'] for x in assets['icons']}:
+    errors.append('Figma icon registry differs from source inventory')
 actual=build()
 saved=json.loads((ROOT/'design/generated/token-map.json').read_text())
 if actual!=saved: errors.append('Token mapping is stale; regenerate from the pinned source.')
@@ -33,3 +44,4 @@ if errors:
     print('\n'.join(errors)); sys.exit(1)
 print(f'PASS: {len(actual["tokens"])} mapped tokens, {len(actual["darkOnly"])} dark-only declarations; source, aliases, names and CSS match.')
 print('Application checks are limited to existing src/app/components files; no runtime or accessibility certification.')
+print(f'PASS: {len(assets["icons"])} source SVG icons and original logo hashes; Figma registry coverage matches.')

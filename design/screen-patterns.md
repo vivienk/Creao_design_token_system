@@ -6,6 +6,8 @@ These are proposed editable compositions using CREAO's existing tokens. They are
 
 ## Shared inventory
 
+Original asset update: shared navigation now uses the original CREAO SVG wordmark and editable source icons. All six specimens inherit the same asset components. See [icon inventory and enforcement](icon-system.md); all 308 bundle icons are available in Figma. Existing variables and source values remain unchanged.
+
 Navigation hierarchy update (2026-10-11): the sidebar uses `--color-surface-alt`, the main canvas uses `--color-surface`, and a right-hand divider uses `--color-border`. Active navigation uses `--color-surface-raised` with `--color-foreground` text and a leading indicator. The selected label is medium weight; inactive labels use `--color-sidebar-fg`. Recents is a smaller muted section label. Each screen selects its corresponding route, and the sidebar stretches alongside the main panel. Both themes use the same source variables; no token values were changed.
 
 Seven source-bound components: primary action, labeled field, workspace navigation, agent message, composer, settings section and agent configuration. Screen patterns reuse component instances and auto-layout; they remain editable. Three shared text styles prevent typography drifting between patterns.

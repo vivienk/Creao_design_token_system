@@ -1,5 +1,7 @@
 # Creao Design System Guideline
 
+Original icon and logo usage is specified in [the asset system](design/icon-system.md). Use those editable components with existing variables; SVG artwork is not stored as a replacement variable system.
+
 Version: 0.2 · Updated: 2026-10-11 · Status: source-backed project baseline
 
 ## Scope and evidence

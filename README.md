@@ -6,6 +6,7 @@ Source-backed design foundations and reusable workspace patterns.
 - [Compliance audit](compliance-audit.md)
 - [Existing source of truth](design/source-of-truth.md)
 - [CSS-to-Figma mapping](design/figma-mapping.md)
+- [Original icons and logo](design/icon-system.md)
 - [Chat, settings and agent patterns](design/screen-patterns.md)
 - [Enforcement in code and review](design/enforcement.md)
 - [Editable Figma file](https://www.figma.com/design/BPE75UDUT8mAXX3NkDmMzE?node-id=2-329)

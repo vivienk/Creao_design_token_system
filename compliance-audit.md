@@ -67,6 +67,8 @@ See [enforcement.md](design/enforcement.md) for what CI blocks and what requires
 
 ## Findings and gaps
 
+Asset integrity update (2026-10-11): 308 source-bundle SVG icons and the original supplied wordmark are registered as editable Figma components. The shared navigation uses these in all six patterns. [Asset manifest and scope](design/icon-system.md) document provenance; CI checks file hashes and registry coverage. This is asset integrity evidence, not runtime accessibility certification.
+
 | Finding | Priority | Evidence and implication | Resolution |
 | --- | --- | --- | --- |
 | F01: Application implementation absent | Release blocker | E03: no UI exists to evaluate | Implement representative screens before conducting an implementation audit |
