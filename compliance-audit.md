@@ -1,128 +1,55 @@
-# Creao Design-System Compliance Audit
+# Creao worked compliance audit
 
-Audit date: 2026-10-11 · Baseline: [design-system-guildeline.md](design-system-guildeline.md) v0.2
+2026-10-11 · Baseline: [design-system-guideline.md](design-system-guideline.md) v1.0. Product-layer design review, not legal or accessibility certification.
 
-## Scope and current conclusion
+## Evidence and status
 
-This is a design-system and accessibility-readiness audit for vivienk/Creao. It does not assess legal, privacy, security, or regulatory compliance.
+Six Figma specimens: chat/settings/agent configuration, Light/Dark, [review frame](https://www.figma.com/design/BPE75UDUT8mAXX3NkDmMzE?node-id=2-329). Measurements: `design/generated/screen-review-evidence.json`. Supplied original chat and Agents screenshots establish visible anatomy only. No application runtime exists in this repo.
 
-The repository now contains a pinned source snapshot, generated CSS/JSON adapters, extraction and validation scripts, CI, review guidance and editable Figma compositions. There is no running application. Overall runtime implementation status: **Not assessed**. Adapter integrity and Figma token parity are evaluated separately below.
+Fail = visible/measured rule violation. Gap = absent capability/evidence prevents approval. Not assessed = no runtime evidence. Prevention below explains what the specified gate would catch; it does not claim the gate historically ran before the source site shipped.
 
-Reference research inspected the public CREAO stylesheet at https://agent.creao.ai/assets/index-C3VRtTd6.css. The public chat URL exposed a login page through the web reader; the browser view remained blank. Authenticated flows and component behavior were not tested.
+![Current reviewed specimens](design/screen-review-preview.png)
 
-## Status definitions
+## Worked findings
 
-- **Pass:** a specific requirement was tested and evidence demonstrates it is met within the stated scope.
-- **Fail:** a tested requirement is violated; include reproduction and impact.
-- **Not assessed:** insufficient implementation or evidence to test the requirement.
-- **Not applicable:** the requirement does not apply; include the reason.
-
-Observed reference tokens are evidence of CSS declarations, not a pass for the new project's implementation.
-
-## Evidence register
-
-![Current reviewed Figma screen specimens](design/screen-review-preview.png)
-
-The [notification reference screenshot](design/notification-pattern.md) provides direct visual evidence for N01. Current screen renders and observed reference defects remain separate from proposed remediation.
-
-| ID | Evidence | What it supports | Limitation |
-| --- | --- | --- | --- |
-| E01 | Public CREAO CSS, fetched 2026-10-11; URL above | Theme token declarations, font stacks, Tailwind 4.2.1 identifier | Versioned asset may change; declarations do not prove rendered usage |
-| E02 | Public https://agent.creao.ai/chat through web reader | Login content is exposed to unauthenticated access | No authenticated UI or behavior test |
-| E03 | GitHub repository root inspection before document creation | Starter README only | No application implementation available |
-| E04 | Pinned CSS SHA-256 and byte-identical re-fetch; [source-of-truth.md](design/source-of-truth.md) | Reproducible inspected source | Upstream authored source remains unknown |
-| E05 | [Figma record](design/generated/figma-record.json) and [preview](design/patterns-preview.png) | 278 variables, preserved aliases, 7 reusable components, 6 desktop compositions, shared styles | Static patterns; no runtime behavior certification |
-| E06 | Local extraction checks and four passing source-mapping tests | Adapter parity, names, aliases, alpha, unit and scoped-theme behavior | No running app; scanner coverage is bounded |
-
-## Completed delivery checks
-
-| Check | Result | Evidence |
-| --- | --- | --- |
-| Source reproducibility | Pass | E04: pinned snapshot matched re-fetch |
-| Generated mapping and CSS parity | Pass | E06: check_design.py |
-| Source alias, scope, alpha and unit extraction | Pass | E06: four unit tests |
-| Figma theme-variable parity | Pass | E05: all 274 theme variables checked; no mismatches within float tolerance |
-| Dark-only representation | Pass | Separate collection retains four declarations without invented Light values |
-| Desktop pattern visual review | Pass within specimen scope | Corrected multiline overlap and nested field overflow; editable instances retained |
-| Application accessibility / responsive behavior | Not assessed | Application absent |
-| Required merge checks / branch protection | Not configured | Workflow added; repository rules not changed |
-
-See [enforcement.md](design/enforcement.md) for what CI blocks and what requires human review. The requirement table below continues to describe runtime release checks.
-
-## Requirement audit
-
-| ID | Area | Acceptance evidence required | Status | Next action |
+| ID / status | Specific violation/evidence | Rule | Exact remediation | How enforcement prevents shipment |
 | --- | --- | --- | --- | --- |
-| DS01 | Semantic colors | Shared tokens used by screens; both themes inspected | Not assessed | Implement theme and inspect rendered colors |
-| DS02 | Typography | Font loading, fallback, wrapping and hierarchy checks | Not assessed | Build representative text specimens |
-| DS03 | Spacing and radius | Component measurements match approved tokens | Not assessed | Review component examples |
-| DS04 | Component states | Default, hover, active, focus, disabled, loading and invalid examples | Not assessed | Build component state matrix |
-| DS05 | Responsive layout | Narrow, tablet and desktop screenshots; no clipped controls | Not assessed | Test content-driven layouts |
-| DS06 | Chat behavior | Composer keyboard rules, streaming, retry and stop verified | Not assessed | Implement and exercise complete flows |
-| DS07 | Motion | Reduced-motion and interaction timing evidence | Not assessed | Inspect animation behavior |
-| A11Y01 | Contrast | Rendered text and meaningful UI contrast measurements | Not assessed | Measure actual color pairs and alpha composition |
-| A11Y02 | Keyboard and focus | Manual keyboard walkthrough, visible unobscured focus | Not assessed | Test all interactive elements |
-| A11Y03 | Semantics and names | Accessibility-tree and screen-reader review | Not assessed | Verify headings, landmarks, controls and labels |
-| A11Y04 | Forms and errors | Errors announced and associated; recovery preserves input | Not assessed | Test invalid submission and recovery |
-| A11Y05 | Zoom and reflow | 200% text enlargement and 320 CSS-pixel layout review | Not assessed | Check zoom, wrapping and horizontal overflow |
-| A11Y06 | Dialog and menu behavior | Focus management, Escape and selection behavior tested | Not assessed | Exercise keyboard and screen-reader paths |
-| A11Y07 | Target size | Target dimensions or documented applicable exceptions | Not assessed | Inspect compact and mobile controls |
-| A11Y08 | Status announcements | Pending, failure and completion announced without excessive chatter | Not assessed | Review live-region behavior |
+| F01 Fail | Settings `2:302` and configuration `2:313` display Continue without wizard context | G05, G07, G08 | Override to Save changes/Save agent, or show actual steps/final save | B02 checks label against outcome; unexplained Continue fails |
+| F02 Gap | Generic Field `2:282` represents appearance/language, instructions, models and permissions as static cards | G02, G07, G08 | Authorize typed controls separately; preserve Field | B01 inventory exposes absent APIs; B04 cannot demonstrate selection/editing/permission behavior |
+| F03 Gap | Composer follows response in content flow; persistent composer/scroll behavior unproven | G06 | Separate scroll region and persistent composer | B03 long-conversation scroll test demands last-message visibility; absent evidence blocks approval |
+| F04 Gap | Seven shared components expose no state properties; default specimens only | G11 | Add authorized state APIs/examples and test interactions | B04 requires state matrix; missing focus/disabled/loading/error/streaming blocks approval |
+| F05 Fail | Leading active indicator inconsistent in current renders, visible for Dark Agents but absent in several other selections | G03 | Correct existing instance visibility overrides in six screens | B02 compares each active route to raised surface + Medium label + indicator rule |
+| F06 Fail | Main frames `2:344`, `2:367`, `2:390` have 14px horizontal padding | G04 | Use 16px horizontal spacing-unit inset consistently | B02 geometry check detects non-multiple; A rejects literal CSS padding if implemented in scanned app files, not Figma |
+| F07 Fail | Chat heading at main edge, settings/config headings inset an extra nested 24px | G04 | Align screen heading slots; preserve panel definition | B02 measures heading position relative to main bounds |
+| F08 Gap | Navigation Regular 14/20 and Recents 12/20 have unmanaged style IDs/mapping | G02, G04 | Document mappings or authorize dedicated roles; preserve Medium Label | B01 override inventory/B02 style inspection require approved role mapping |
+| F09 Fail/Gap | Navigation one stack mixes utilities/destinations; account follows content | G03 | Named groups and bottom account slot, long-recents review | B02 inspects grouping; B03 verifies footer at changing viewport/content sizes |
+| F10 Fail/Gap | Configuration flat list lacks identity/runtime grouping, draft status, scoped permission explanation | G08 | Separate groups; add approved status and permission capability | B02 grouping check plus B04 save/error/permission evidence |
+| N01 Fail | Supplied Agents announcement X appears below message near left instead of top-right | G10 | Top-aligned content/dismiss layout; reserve hit area/gap | B03 default and wrapped-content close bounds fail placement test |
+| A01 Not assessed | No actual required cue/background contrast measurements provided; faint token alone proves no failure | G12 | Measure both themes/states; choose existing roles or propose extension | B05 missing pair/ratio blocks approval; measured <3:1 fails unless valid exception |
+| A02 Not assessed | No new-context link inventory/accessibility evidence | G13 | Warning, accessible name and correct target/rel where intentional | B06 attributes/name/keyboard check catches missing warning under project policy |
 
-## Findings and gaps
+![Supplied Agents screenshot: misplaced announcement dismiss control](design/notification-reference.png)
 
-N01: the supplied Agents-page screenshot shows an announcement's dismiss X below the content at the left. This is an **observed placement defect**, distinct from an assessed WCAG failure. The approved [notification placement contract](design/notification-pattern.md) anchors dismissal at the container's top-right. Live remediation and interaction retest remain pending; the repository has no application implementation to patch.
+## Passing evidence and limits
 
-Two [high-priority accessibility requirements](design/accessibility-priority-issues.md) have been added: A11Y09 (required non-text control/state cues, 3:1 contrast, WCAG AA) and A11Y10 (advance warning for new browsing contexts, project policy informed by WCAG AAA guidance). Both are **Not assessed** in the runtime application. No measured failure is asserted. The user's third item was empty.
+Sidebar/main surfaces visibly separate in both themes. Original assets are retained. Content Body16/24, Label14/20 and Heading24/32 styles are consistent. Core gaps16, padding24, navigation gaps12 and button padding12/16 follow spacing unit. No default desktop clipping appears. Sole primary appearance is consistent; no available secondary/destructive variant was incorrectly selected.
 
-The [2026-10-11 screen review](design/screen-review.md) records ten findings covering structure, action labels, component capabilities, state coverage, spacing and typography. [Extensions are proposed separately](design/component-extension-proposal.md) and remain unapplied. Existing Figma definitions were preserved during this review. Static patterns remain incomplete as interactive specifications.
+Foundation gate A passes source/adapters/assets and four extraction tests. It cannot resolve the screen findings. Runtime keyboard, reflow, persistence, contrast and link behavior remain unassessed.
 
-Asset integrity update (2026-10-11): 308 source-bundle SVG icons and the original supplied wordmark are registered as editable Figma components. The shared navigation uses these in all six patterns. [Asset manifest and scope](design/icon-system.md) document provenance; CI checks file hashes and registry coverage. This is asset integrity evidence, not runtime accessibility certification.
+## Missing capability proposals — separate and unapplied
 
-| Finding | Priority | Evidence and implication | Resolution |
+| Extension | Existing definition preserved | Capability proposed | Acceptance gate |
 | --- | --- | --- | --- |
-| F01: Application implementation absent | Release blocker | E03: no UI exists to evaluate | Implement representative screens before conducting an implementation audit |
-| F02: Official reference system not located | Documentation gap | Public searches did not locate an official design-system guide or kit; this does not prove none exists | Treat the guideline as a derived project baseline |
-| F03: Authenticated reference flows unverified | Evidence gap | E02: login content only | Inspect authenticated screens before claiming visual or behavioral fidelity |
-| F04: Proposed rules need validation | Design review needed | Layout sizes, component behavior, motion and responsive rules are project proposals | Validate during implementation and record approved deviations |
-| F05: Border contrast requires checking | Potential risk; not a confirmed failure | E01: low-emphasis and alpha border tokens | Ensure required control identification does not depend solely on faint borders |
+| Typed controls | Field2:282 | Input/textarea/select/permission control with label/helper/error | B04 states and B05 contrast |
+| Button states/roles | Primary2:280 | State/label/icon slots; secondary/destructive only when needed | B02 hierarchy, B04 states, B05 cues |
+| Chat runtime | Composer2:297, Message2:293 | Scroll region, persistent editor, Stop/Retry/attachments | B03 scroll/reflow, B04 recovery |
+| Navigation/type roles | Navigation2:285 and current styles | Explicit groups, selected item and approved Regular/small roles | B01 mappings, B02/B03 consistency |
+| Save/status/access | Settings2:302, Configuration2:313 | Dirty/save outcomes, scoped permission controls, separate optional Test | B02 groups, B04 persistence |
+| Notification | Source x and existing tokens | Content/action/dismiss slots with top-right close | B03 positioning, B04 focus, B05 contrast |
+| External link | Source assets/styles | Current-context default; explicit warning/name for new context | B06 links |
 
-## Audit procedure
+Top-right dismissal placement is explicitly approved. Other shared capability changes await explicit authorization. No extension proposes a replacement token family.
 
-1. Record the project commit, deployed URL, browser, viewport, theme, OS and assistive technology.
-2. Audit navigation, composer, messages, menus, dialogs, empty states, loading, errors and retry flows.
-3. Compare rendered design with approved tokens and component rules in both themes.
-4. Run automated accessibility checks, then manually test keyboard, screen reader, zoom and touch behavior.
-5. Add evidence for each result; update statuses only for the scope actually tested.
-6. Fix failures, retest affected flows, and document any accepted design deviations.
+## Decision and retest
 
-Use [W3C WCAG 2.2 guidance](https://www.w3.org/WAI/WCAG22/quickref/) as the accessibility test reference. This table is a project review checklist, not an exhaustive WCAG conformance evaluation.
-
-## Future finding template
-
-```text
-Finding ID:
-Requirement ID:
-Status / severity:
-Project commit and URL:
-Environment / theme / viewport:
-Steps to reproduce:
-Expected result:
-Actual result:
-User impact:
-Screenshot or measurement:
-Owner:
-Fix / accepted deviation and rationale:
-Retest date and result:
-```
-
-## Release review
-
-- [ ] Representative application screens exist and have been audited.
-- [ ] Required component states work in both themes.
-- [ ] Accessibility findings have evidence and remediation status.
-- [ ] Responsive and chat-flow checks are complete.
-- [ ] Deviations have a rationale, owner and review date.
-- [ ] Product conformance statements reflect only completed testing.
-
-Reviewer: unassigned · Implementation commit: unavailable · Approval: pending implementation and testing.
+**Blocked as complete implementation specifications:** visible violations and capability gaps remain. Live Creao was not modified. For every fix record finding ID, commit, component/screen IDs, theme/viewport/state, applicable B check, before/after evidence and reviewer. Close Fail only after the check passes; close Gap only after authorized capability and evidence exist. Documentation edits alone cannot close runtime findings.
