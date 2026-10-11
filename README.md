@@ -4,6 +4,8 @@ Source-backed design foundations and reusable workspace patterns.
 
 - [Design guideline](design-system-guildeline.md)
 - [Compliance audit](compliance-audit.md)
+- [Screen and component review](design/screen-review.md)
+- [Separate component extension proposal](design/component-extension-proposal.md)
 - [Existing source of truth](design/source-of-truth.md)
 - [CSS-to-Figma mapping](design/figma-mapping.md)
 - [Original icons and logo](design/icon-system.md)
